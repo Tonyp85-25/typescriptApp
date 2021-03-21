@@ -1,6 +1,10 @@
-/// <reference path="base-component.ts" />
-namespace App{
+
     //ProjectItem Class
+    import {Component} from "./base-component.js";
+    import {Draggable} from "../models/drag-drop.js";
+    import {Project} from "../models/project.js";
+    import {autoBind} from "../decorators/autobind.js";
+
     export class ProjectItem extends Component<HTMLUListElement, HTMLLIElement> implements Draggable{
         private project:Project
         get persons(){
@@ -39,4 +43,3 @@ namespace App{
 
         }
     }
-}

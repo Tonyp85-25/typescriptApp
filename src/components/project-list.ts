@@ -1,10 +1,15 @@
-/// <reference path="base-component.ts" />
 
-namespace App{
     // ProjectList Class
+    import {Component} from "./base-component.js";
+    import {DragTarget} from "../models/drag-drop.js";
+    import {projectState} from "../state/project-state.js";
+    import {Project, ProjectStatus} from "../models/project.js";
+    import {ProjectItem} from "./project-item.js";
+    import {autoBind} from "../decorators/autobind.js";
+
     export class ProjectList extends Component <HTMLDivElement,HTMLElement> implements DragTarget{
 
-        assignedProjects: any[]
+        assignedProjects: Project[]
 
         constructor(private type: 'active'|'finished') {
             super('project-list','app',false, `${type}-projects`)
@@ -43,6 +48,7 @@ namespace App{
             this.element.querySelector('h2')!.textContent = this.type.toUpperCase() + ' PROJECTS'
         }
 
+        @autoBind
         dragLeaveHandler(_: DragEvent) {
             const listEl = this.element.querySelector('ul')!
             listEl.classList.remove('droppable')
@@ -65,4 +71,3 @@ namespace App{
 
     }
 
-}

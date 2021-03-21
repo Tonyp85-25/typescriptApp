@@ -1,5 +1,4 @@
 
-namespace App{
     export function autoBind(_:any,
                       _2:string,
                       descriptor:PropertyDescriptor){
@@ -13,4 +12,3 @@ namespace App{
         }
         return adjDescriptor
     }
-}
